@@ -9,3 +9,6 @@ UofA Data Analytics Bootcamp Final Group Project
 
 ## Problem
 Employees with frequent business travel experience time lost with family and productive work time while in transit. In order to minimize lost time, past flight history will be examined and modeled to predict which flight routes experience the smallest delay times.
+
+## Webpage
+https://nicolelund.github.io/flight_delay_prediction/
