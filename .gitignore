@@ -1,3 +1,7 @@
+# Model output is too large to upload to GitHub
+*.sav
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
