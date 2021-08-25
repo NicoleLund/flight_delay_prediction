@@ -1,28 +1,166 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
+
   <head>
-    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <title>Tucson Flight Delays Prediction</title>
+
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet"
+      href=" https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css ">
+    <link rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
-    <!-- Style Sheet -->
-    <link rel="stylesheet" href="./static/css/styles.css">
-
-    <title>Flight Delays</title>
-
+    <!-- Plugins -->
   </head>
 
   <body>
-    <h1>Hello!</h1>
 
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <nav class="navbar navbar-light bg-white  navbar-expand-md">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarNav0" aria-controls="navbarNav0"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav0">
+          <ul class="navbar-nav me-auto ms-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span
+                  class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="analysis.html">Analysis</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Viz 1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Viz 2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Viz 3</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Viz 4</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-    <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <section class="bg-light pt-5 pb-5">
+      <div class="container pb-5">
+        <div class="row justify-content-center d-flex">
+          <div class="col-xs-12 col-md-10 align-self-center">
+            <h1 class="display-4 text-center  mb-3 mt-5">Tucson Airport Flight Delays</h1>
+            <p class="lead  text-center">U of A Data Analytics Bootcamp Final Group Project</p>
+            <p class="lead  text-center">Nicole Lund • Anne Niemiec • Tarak Patel • Amber Royster</p>
+            <div class="justify-content-center d-flex mt-3 mb-1">
+              <a class="btn btn-outline-primary  btn-lg   mt-md-3 me-2" href="analysis.html"
+                role="button">Analysis</a>
+              <a class="btn btn-outline-secondary  btn-lg   mt-md-3 ml-md-3"
+                href="#" role="button">Visualizations</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-5 pb-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-12 col-md-6 col-lg-5">
+            <h1>Problem</h1>
+            <p class="text-h3">Employees with frequent business travel experience time lost with family and productive work time while in transit. In order to minimize lost time, past flight history will be examined and modeled to predict which flight routes experience the smallest delay times.
+            </p>
+          </div>
+          <div class="col-12 col-md-6 ms-md-auto mt-4 mt-md-0">
+            <img alt="image" class="img-fluid"
+              src="http://pointmetotheplane.boardingarea.com/wp-content/uploads/2016/05/flight-delays.jpg">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-light text-dark pt-5 pb-5">
+      <div class="container">
+        <div class="row mb-5 ">
+          <div class="col-12 text-center">
+          </div>
+        </div>
+        <div class="row text-center justify-content-sm-center no-gutters">
+          <div class="col-12  col-md-3 m-auto">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <i class="bi bi-star-fill fa-3x mb-3 mt-3 text-primary"
+                  aria-hidden="true"></i>
+                <h3 class="mt-2 mb-3">Viz 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Suspendisse cursus erat sed sem sagittis cursus.</p>
+                <p class="mt-4">
+                  <a href="#">Read More &gt;</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12  col-md-3 m-auto">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <i class="bi bi-star-fill fa-3x mb-3 mt-3 text-primary"
+                  aria-hidden="true"></i>
+                <h3 class="mt-2 mb-3">Viz 2</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Suspendisse cursus erat sed sem sagittis cursus.</p>
+                <p class="mt-4">
+                  <a href="#">Read More &gt;</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12  col-md-3 m-auto">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <i class="bi bi-star-fill fa-3x mb-3 mt-3 text-primary"
+                  aria-hidden="true"></i>
+                <h3 class="mt-2 mb-3">Viz 3</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Suspendisse cursus erat sed sem sagittis cursus.</p>
+                <p class="mt-4">
+                  <a href="#">Read More &gt;</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12  col-md-3 m-auto">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <i class="bi bi-star-fill fa-3x mb-3 mt-3 text-primary"
+                  aria-hidden="true"></i>
+                <h3 class="mt-2 mb-3">Viz 4</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Suspendisse cursus erat sed sem sagittis cursus.</p>
+                <p class="mt-4">
+                  <a href="#">Read More &gt;</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy"
+      crossorigin="anonymous"></script>
+
 
   </body>
+
 </html>
