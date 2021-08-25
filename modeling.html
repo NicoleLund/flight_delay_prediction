@@ -71,30 +71,81 @@
     </section>
     <section class="pt-5 pb-5">
       <div class="container">
-        <!-- <div class="row">
-          <div class="col text-center">
-            <h1> Title</h1>
-          </div>
-        </div> -->
-        <div class="row pt-4">
-          <div class="col">
-            <img alt="image" class="img-fluid"
-              src=" https://dummyimage.com/1170x700/5fa9f8/efefef">
-          </div>
-          <div class="col">
-            <img alt="image" class="img-fluid"
-              src=" https://dummyimage.com/1170x700/5fa9f8/efefef">
-          </div>
-        </div>
-        <div class="row pt-4">
+        <div class="row">
           <div class="col-12">
-            <p class="lead">Fusce dapibus, tellus ac cursus commodo, tortor
-              mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-              Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
-              nibh, ut fermentum massa justo sit amet risus. Fusce
-              dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-              ut fermentum massa justo sit amet risus.
-            </p>
+            <h4>Abstract</h4>
+            <hr>
+            <p class="text-h3">Employees with frequent business travel experience time lost with family and productive work time while in transit. In order to minimize lost time, 2017 flight history departing from Tucson International Airport (TUS) was used to build a model to predict which routes experience the least disruptions. Multiple model types were investigated using input parameters that a customer would know prior to purchasing a flight (airline, flight number, destination, scheduled departure time, scheduled arrival time, day of the week and flight distance). The models predicted if an individual flight might be canceled, diverted or delayed for more than 30 minutes. The most successful model was a random forest classifier model. However, the model scores did not meet the minimum accuracy and precision requirements of 70%. It is believed that there are enough random chance occurances and airline schedule modifications influencing the data to make accurate prediction impossible.</p>
+            </br>
+            <h4>Model Input/Output Feature Assessment</h4>
+            <hr>
+            <p class="text-h3">Models were built from the data contained in 2017.csv. There were a large number of columns that needed to be assessed as to their suitability for including in the model. The following describes the available source data columns and how each were dispositioned for modeling input, output or ignored.</p>
+            <p><b>Input values to the model (known by customer)</b></p>
+            <ul>
+                <li>OP_CARRIER: airline designation code</li>
+                <li>OP_CARRIER_FL_NUM: flight number</li>
+                <li>day_of_week: flight day of the week calculated from FL_DATE</li>    
+                <li>DEST: destination airport code</li>    
+                <li>CRS_DEP_TIME: scheduled departure time</li>    
+                <li>CRS_ARR_TIME: scheduled arrival time</li>    
+                <li>DISTANCE: flight distance</li>
+            </ul>
+            <p><b>Output values used to train the model (of interest to the customer)</b></p>
+            <ul>
+                <li>CANCELLED: flight canceled [0 = No, 1 = Yes]</li>
+                <li>DIVERTED: flight diverted [0 = No, 1 = Yes]</li>
+                <li>DELAY: flight ARR_DELAY greater than 30 minutes [0 = No, 1 = Yes]</li>    
+            </ul>
+            <p><b>Input values not included in the model (note, any numerically possible calculations are indicated)</b></p>
+            <ul>
+                <li>Irrelevant or duplicate information</li>
+                    <ul>
+                        <li>ORIGIN: departure city, filtered for TUS departures only</li>
+                        <li>FL_DATE: flight date</li>
+                        <li>CRS_ELAPSED_TIME: scheduled elapsed time (minutes)</li>
+                    </ul>
+                <li>Information not known prior to departure</li>
+                    <ul>
+                        <li>DEP_TIME: actual departure time, CRS_DEP_TIME + DEP_DELAY</li>
+                        <li>WHEELS_OFF: actual wheels off time, DEP_TIME + TAXI_OUT</li>
+                        <li>WHEELS_ON: actual wheels on time, ARR_TIME - TAXI_IN</li>
+                        <li>ARR_TIME: actual arrival time, DEP_TIME + ACTUAL_ELAPSED_TIME + time zone difference, CRS_ARR_TIME + ARR_DELAY</li>
+                        <li>TAXI_OUT: calculated time spent in taxi between departure time and wheels off (minutes)</li>
+                        <li>TAXI_IN: calculated time spent in taxi between wheels on and arrival time</li>
+                        <li>AIR_TIME: calculated time spent in the air (minutes)</li>
+                        <li>ACTUAL_ELAPSED_TIME: time between gates, TAXI_OUT + TAXI_IN + AIR_TIME (minutes)</li>
+                    </ul>
+                <li>Information that directly reveals the output values the model is predicting</li>
+                    <ul>
+                        <li>DEP_DELAY: departure delay time (minutes)</li>
+                        <li>ARR_DELAY: actual arrival time delay (minutes), CARRIER_DELAY + WEATHER_DELAY + NAS_DELAY + SECURITY_DELAY + LATE_AIRCRAFT_DELAY</li>
+                        <li>CANCELLATION_CODE: reason for cancellation</li>
+                        <li>CARRIER_DELAY: arrival delay time due to carrier (minutes)</li>
+                        <li>WEATHER_DELAY: arrival delay time due to weather (minutes)</li>
+                        <li>NAS_DELAY: arrival delay time due to NAS (minutes)</li>
+                        <li>SECURITY_DELAY: arrival delay time due to security (minutes)</li>
+                        <li>LATE_AIRCRAFT_DELAY: arrival delay time due to aircraft (minutes)</li>
+                    </ul>    
+            </ul>
+            </br>
+            <h4>Data Preparation</h4>
+            <hr>
+            <p class="text-h3">The 2017.csv data was prepared for modeling in the following manner.</p>
+                <ol>
+                    <li>Initialized consistent random seed</li>
+                    <li>Collected model input and output values into X and y arrays.</li>
+                    <li>Converted categorical columns into one-hot-encoding columns.</li>
+                    <li>Split the X and y data into training (X_train & y_train, 70% of data) and testing (X_test & y_test, 30% of data) groups.</li>
+                    <li>Applied MinMaxScaler transformation to X_train and X_test.</li>
+                    <li>Saved X_train, y_train, X_test and y_test to csv files to ensure that all models used the same input and output data.</li>
+                </ol>
+            </br>
+            <h4>Model Investigation</h4>
+            <hr>
+            <p class="text-h3">Each model was built and scored from the same source data. Scoring was reviewed for Canceled, Diverted and Delayed model outputs. None of the models showed any capability for predicting canceled or diverted flights. Model details are presented in the order of best to worst model precision:</p>
+            <ul>
+                <li>Random Forest Classifier (no hyperparameter tuning done in the initial investigation)</li>
+            </ul>
           </div>
         </div>
       </div>
