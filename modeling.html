@@ -144,8 +144,195 @@
             <hr>
             <p class="text-h3">Each model was built and scored from the same source data. Scoring was reviewed for Canceled, Diverted and Delayed model outputs. None of the models showed any capability for predicting canceled or diverted flights. Model details are presented in the order of best to worst model precision:</p>
             <ul>
-                <li>Random Forest Classifier (no hyperparameter tuning done in the initial investigation)</li>
-            </ul>
+              <li><b>Random Forest Classifier (no hyperparameter tuning done in the initial investigation)</b></li>
+            </br>
+            <div class="col-9">
+            <table class="table table-sm table-hover">
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Overall Accuracy</td>
+                  <td>0.87</td>
+                </tr>
+                <tr>
+                  <td>Precision of Not Delayed Outcome</td>
+                  <td>0.89</td>
+                </tr>
+                <tr>
+                  <td>Precision of Delayed Outcome</td>
+                  <td>0.31</td>
+                </tr>
+                <tr>
+                  <td>-----</td>
+                  <td>-----</td>
+                </tr>
+                <tr>
+                  <td>Truth - # of flights without delays</td>
+                  <td>4087</td>
+                </tr>
+                <tr>
+                  <td>Predicted - # of flights without delays</td>
+                  <td>4434</td>
+                </tr>
+                <tr>
+                  <td>Truth - # of flights with delays</td>
+                  <td>535</td>
+                </tr>
+                <tr>
+                  <td>Predicted - # of flights with delays</td>
+                  <td>188</td>
+                </tr>
+              </tbody>
+            </table>
+            </br>
+              <li><b>Decision Tree Classifier (no hyperparameter tuning done in the initial investigation)</b></li>
+            </br>
+            <table class="table table-sm table-hover">
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Overall Accuracy</td>
+                  <td>0.87</td>
+                </tr>
+                <tr>
+                  <td>Precision of Not Delayed Outcome</td>
+                  <td>0.89</td>
+                </tr>
+                <tr>
+                  <td>Precision of Delayed Outcome</td>
+                  <td>0.30</td>
+                </tr>
+                <tr>
+                  <td>-----</td>
+                  <td>-----</td>
+                </tr>
+                <tr>
+                  <td>Truth - # of flights without delays</td>
+                  <td>4087</td>
+                </tr>
+                <tr>
+                  <td>Predicted - # of flights without delays</td>
+                  <td>4448</td>
+                </tr>
+                <tr>
+                  <td>Truth - # of flights with delays</td>
+                  <td>535</td>
+                </tr>
+                <tr>
+                  <td>Predicted - # of flights with delays</td>
+                  <td>174</td>
+                </tr>
+              </tbody>
+            </table>
+            </br>
+              <li><b>Logistic Regression (hyperparameter tuning completed in initial investigation)</b></li>
+            </br>
+            <table class="table table-sm table-hover">
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Overall Accuracy</td>
+                  <td>0.88</td>
+                </tr>
+                <tr>
+                  <td>Precision of Not Delayed Outcome</td>
+                  <td>0.88</td>
+                </tr>
+                <tr>
+                  <td>Precision of Delayed Outcome</td>
+                  <td>0.25</td>
+                </tr>
+                <tr>
+                  <td>-----</td>
+                  <td>-----</td>
+                </tr>
+                <tr>
+                  <td>Truth - # of flights without delays</td>
+                  <td>4087</td>
+                </tr>
+                <tr>
+                  <td>Predicted - # of flights without delays</td>
+                  <td>4618</td>
+                </tr>
+                <tr>
+                  <td>Truth - # of flights with delays</td>
+                  <td>535</td>
+                </tr>
+                <tr>
+                  <td>Predicted - # of flights with delays</td>
+                  <td>4</td>
+                </tr>
+              </tbody>
+            </table>
+            </br>
+              <li><b>Neural Network (hyperparameter tuning completed in initial investigation)</b></li>
+            </br>
+            <table class="table table-sm table-hover">
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Overall Accuracy</td>
+                  <td>0.12</td>
+                </tr>
+                <tr>
+                  <td>Precision of Not Delayed Outcome</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>Precision of Delayed Outcome</td>
+                  <td>0.12</td>
+                </tr>
+                <tr>
+                  <td>-----</td>
+                  <td>-----</td>
+                </tr>
+                <tr>
+                  <td>Truth - # of flights without delays</td>
+                  <td>4087</td>
+                </tr>
+                <tr>
+                  <td>Predicted - # of flights without delays</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <td>Truth - # of flights with delays</td>
+                  <td>535</td>
+                </tr>
+                <tr>
+                  <td>Predicted - # of flights with delays</td>
+                  <td>4622</td>
+                </tr>
+              </tbody>
+            </table>
+            </br>
+            </div>
+              <li><b>Support Vector Classification (computer resources were insufficient to produce this model)</b></li>
+              </br>
+              <p class="text-h3">Ideally a predictive model of flight cancellations, diversions, and delays would provide at least 70% accuracy and 70% precision. Several of the investigated models met the accuracy requirement, but none of them met the precision requirement. The accuracy requirement was met because the data set was heavily skewed with flights that were not canceled, diverted or delayed. As result models that biased the results toward no disruptions would have a reasonable accuracy score. Evidence for this can be seen in the overall accuracy and precision of not delayed outcomes matching within a few percentage points for all but the neural network model. More interesting were the precision scores for predicting delayed outcomes. Precision is a measure of how well the model reproduces each possible outcome. For the intended purpose of the model the precision of predicting cancellations, diversions and delays is the best indicator of model suitability. None of the models exceeded 70% precision on predicting flight disruptions and should be discarded.</p></ul>
+              </br>
+            <h4>Final Model Definition</h4>
+            <hr>
+            <p class="text-h3">In the interest of educating ourselves further in building/using predictive models, the random forest classifier model was further developed. Model preparation was completed as before, but hyperparameter tuning was added to further refine the model.</p> 
           </div>
         </div>
       </div>
