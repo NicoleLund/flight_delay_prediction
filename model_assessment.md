@@ -135,6 +135,10 @@ The results of building the final model with 2017 training data and testing with
 
 ![2017 model results](images/random_forest_model_2017_test_results.png)
 
+The following dashboard shows how well the model predicted the 2017 test data.  There is very little overlap between real and predicted results indicating that the model was insufficient.
+
+![2017 model dashboard](images/random_forest_model_2017_test_dashboard.png)
+
 ## Predicting 2018 Flight Disruptions
 Despite the low precision of the model, the team wanted to explore what would happen if the model was applied to 2018 flight data.  Several issues arose immediately upon applying model's one-hot-encoding transformation to the new data set. 3 new airlines and 3 new destinations were added to the Tucson International airport schedule.  The model could not be applied to any data associated with the new features (2823 of 18223 flights for the year). In order to move forward the 2018 was split into two arrays: data that could be applied to the model and data that could not.  The data that could be applied to the model was then used to generate model predictions. The results of the predictions were:
 
